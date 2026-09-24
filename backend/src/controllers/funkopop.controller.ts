@@ -1,4 +1,3 @@
-
 import { Request, Response } from 'express';
 import { FunkoPop } from '../models/FunkoPop';
 
@@ -8,7 +7,9 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     const funkos = await FunkoPop.findAll();
     res.status(200).json(funkos);
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro ao buscar os Funko Pops.', erro: (error as Error).message });
+    res
+      .status(500)
+      .json({ mensagem: 'Erro ao buscar os Funko Pops.', erro: (error as Error).message });
   }
 };
 
@@ -32,7 +33,9 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 
     res.status(200).json(funko);
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro ao buscar o Funko Pop.', erro: (error as Error).message });
+    res
+      .status(500)
+      .json({ mensagem: 'Erro ao buscar o Funko Pop.', erro: (error as Error).message });
   }
 };
 
@@ -43,7 +46,8 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
     if (!personagem || !casa || numeroColecao === undefined || preco === undefined) {
       res.status(400).json({
-        mensagem: 'Campos obrigatórios ausentes: personagem, casa, numeroColecao e preco são obrigatórios.',
+        mensagem:
+          'Campos obrigatórios ausentes: personagem, casa, numeroColecao e preco são obrigatórios.',
       });
       return;
     }
@@ -58,7 +62,9 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
     res.status(201).json(novoFunko);
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro ao criar o Funko Pop.', erro: (error as Error).message });
+    res
+      .status(500)
+      .json({ mensagem: 'Erro ao criar o Funko Pop.', erro: (error as Error).message });
   }
 };
 
@@ -77,7 +83,8 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 
     if (!personagem || !casa || numeroColecao === undefined || preco === undefined) {
       res.status(400).json({
-        mensagem: 'Campos obrigatórios ausentes: personagem, casa, numeroColecao e preco são obrigatórios.',
+        mensagem:
+          'Campos obrigatórios ausentes: personagem, casa, numeroColecao e preco são obrigatórios.',
       });
       return;
     }
@@ -92,7 +99,9 @@ export const update = async (req: Request, res: Response): Promise<void> => {
     await funko.update({ personagem, casa, numeroColecao, preco, emEstoque });
     res.status(200).json(funko);
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro ao atualizar o Funko Pop.', erro: (error as Error).message });
+    res
+      .status(500)
+      .json({ mensagem: 'Erro ao atualizar o Funko Pop.', erro: (error as Error).message });
   }
 };
 
@@ -118,6 +127,8 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
 
     res.status(204).send();
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro ao remover o Funko Pop.', erro: (error as Error).message });
+    res
+      .status(500)
+      .json({ mensagem: 'Erro ao remover o Funko Pop.', erro: (error as Error).message });
   }
 };

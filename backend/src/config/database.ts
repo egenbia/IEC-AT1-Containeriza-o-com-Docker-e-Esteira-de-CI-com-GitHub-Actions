@@ -3,14 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const {
-  DB_HOST,
-  DB_PORT,
-  DB_NAME,
-  DB_USER,
-  DB_PASSWORD,
-  DB_SSL,
-} = process.env;
+const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_SSL } = process.env;
 
 if (!DB_HOST || !DB_NAME || !DB_USER || !DB_PASSWORD) {
   throw new Error('Variáveis de ambiente do banco de dados não configuradas corretamente.');

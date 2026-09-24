@@ -15,7 +15,7 @@ export interface FunkoPopAttributes {
 
 // Atributos opcionais na hora de CRIAR um novo registro
 // (id, createdAt, updatedAt são gerados automaticamente)
-export type FunkoPopCreationAttributes = Optional
+export type FunkoPopCreationAttributes = Optional<
   FunkoPopAttributes,
   'id' | 'createdAt' | 'updatedAt'
 >;
