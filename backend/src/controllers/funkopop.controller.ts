@@ -132,3 +132,4 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
       .json({ mensagem: 'Erro ao remover o Funko Pop.', erro: (error as Error).message });
   }
 };
+
