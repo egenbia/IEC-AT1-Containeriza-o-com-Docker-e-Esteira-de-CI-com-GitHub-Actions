@@ -3,9 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import { testConnection, sequelize } from './config/database';
-import { FunkoPop } from './models/FunkoPop';
 import funkopopRoutes from './routes/funkopop.routes';
-import { swaggerSpec } from './config/swagger';
+import swaggerDocument from "./docs/swagger.json";
 
 dotenv.config();
 
@@ -17,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 // Documentação Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rotas
 app.use('/', funkopopRoutes);
@@ -33,3 +32,4 @@ const init = async (): Promise<void> => {
 };
 
 init();
+
